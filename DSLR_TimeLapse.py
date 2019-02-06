@@ -3,16 +3,14 @@
 
 import gphoto2 as gp
 import os
-import ffmpeg
-import subprocess
 import time
 import cv2
 
 
 
 #Configuration (READONLY)
-N_PHOTOS = 25
-LAPSE = 0
+N_PHOTOS = 3
+LAPSE = 1
 CAMERA_DELAY = 0 #Canon EOS 1200D delay
 IMG_PATH = "/home/pepe/Escritorio"
 VID_PATH = "/home/pepe/Escritorio/video.avi"
@@ -36,7 +34,8 @@ def take_photos():
         print('Copying image to', target)
         camera_file = gp.check_result(gp.gp_camera_file_get(cam, file_path.folder, file_path.name, gp.GP_FILE_TYPE_NORMAL))
         gp.check_result(gp.gp_file_save(camera_file, target))
-        time.sleep(LAPSE-CAMERA_DELAY)
+        time.sleep(lapse_time())   
+        
         
     gp.check_result(gp.gp_camera_exit(cam))
 
@@ -54,6 +53,17 @@ def create_video():
 
     cv2.destroyAllWindows()
     video.release()
+    print "Video Created"
+
+
+#Calculate the time between photos taking into account the camera delay
+def lapse_time():
+    time = 0
+    if LAPSE > CAMERA_DELAY:
+        time = LAPSE - CAMERA_DELAY
+    
+    return time
+
 
 
 if __name__ == "__main__":

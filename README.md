@@ -4,6 +4,7 @@ With this python script you can create TimeLapse videos with your camera and Lin
 ## Requirements
 
 - [gphoto2](https://github.com/jim-easterbrook/python-gphoto2)
+- [opencv](https://pypi.org/project/opencv-python/)
 
 ## How to use
 You only have to edit the configuration and run the script. It takes your camera mode and configuration.
