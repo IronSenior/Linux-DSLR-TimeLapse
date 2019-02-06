@@ -8,7 +8,7 @@ import cv2
 
 
 
-#Configuration (READONLY)
+#Configuration
 N_PHOTOS = 3
 LAPSE = 1
 CAMERA_DELAY = 0 #Canon EOS 1200D delay
