@@ -23,5 +23,5 @@ You only have to edit the configuration and run the script. It takes your camera
 
 
 ## Warnning
-Use this at your own risk. I haven’t damaged my camera with it yet, but it’s not impossible. 
-Every DSLR camera have a limited lifespan so be carefull with how many pictures you take. [More info](https://improvephotography.com/46433/long-dslr-last/)
+<span style="background-color: red">Use this at your own risk. I haven’t damaged my camera with it yet, but it’s not impossible. 
+Every DSLR camera have a limited lifespan so be carefull with how many pictures you take. [More info](https://improvephotography.com/46433/long-dslr-last/)</span>
