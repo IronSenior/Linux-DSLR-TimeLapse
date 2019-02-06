@@ -3,16 +3,19 @@
 
 import gphoto2 as gp
 import os
+import ffmpeg
 import subprocess
 import time
+import cv2
+
 
 
 #Configuration (READONLY)
-N_PHOTOS = 10
-LAPSE = 15
-CAMERA_DELAY = 3 #Canon EOS 1200D delay
-IMG_PATH = ""
-VID_PATH = ""
+N_PHOTOS = 25
+LAPSE = 0
+CAMERA_DELAY = 0 #Canon EOS 1200D delay
+IMG_PATH = "/home/pepe/Escritorio"
+VID_PATH = "/home/pepe/Escritorio/video.avi"
 
 
 def configured_camera():
@@ -21,7 +24,7 @@ def configured_camera():
     cam = gp.Camera()
     cam.init(context)
 
-    print cam.get_summary(context)
+    print(cam.get_summary(context))
     return cam
 
 def take_photos():
@@ -39,7 +42,18 @@ def take_photos():
 
 
 def create_video():
-    subprocess.call("ffmpeg -r 24 -pattern_type glob -i '*.jpg' -i /home/pepe/prueba/capt%04d.jpg -s hd1080 -vcodec libx264 timelapse.mp4")
+    images = [img for img in os.listdir(IMG_PATH) if img.endswith(".jpg")]
+    frame = cv2.imread(os.path.join(IMG_PATH, images[0]))
+    height, width, layers = frame.shape
+
+    video = cv2.VideoWriter(VID_PATH, 0, 24, (width,height))
+
+    print "Creating the video"
+    for image in images:
+        video.write(cv2.imread(os.path.join(IMG_PATH, image)))
+
+    cv2.destroyAllWindows()
+    video.release()
 
 
 if __name__ == "__main__":
