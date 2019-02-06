@@ -8,11 +8,11 @@ import time
 
 
 #Configuration (READONLY)
-N_PHOTOS = 2
-LAPSE = 30
+N_PHOTOS = 10
+LAPSE = 15
 CAMERA_DELAY = 3 #Canon EOS 1200D delay
-IMG_PATH = "/home/pepe/prueba"
-VID_PATH = "/home/pepe/prueba/"
+IMG_PATH = ""
+VID_PATH = ""
 
 
 def configured_camera():
